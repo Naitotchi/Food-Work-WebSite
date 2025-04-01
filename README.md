@@ -6,4 +6,4 @@ To get the coordinates of an address input the address on this page and pull the
 
 [Mapbox Geocoding Demo](https://docs.mapbox.com/help/demos/geocoding/final.html)
 
-### Testing Auto Deployment
+### Not Currently Testing Auto Deployment
