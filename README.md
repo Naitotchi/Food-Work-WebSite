@@ -1,7 +1,4 @@
 # Food-Work-Website
-
-![Deploy](https://github.com/naitotchi/food-work-website/actions/workflows/deploy.yml/badge.svg?branch=main)
-
 Map that shows food places and reviews mostly from work trips.
 
 ## Coordinates from Address
