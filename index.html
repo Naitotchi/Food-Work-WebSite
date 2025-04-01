@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Wire-Tech Food Map</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  
+  <!-- Mapbox CSS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+  
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<!-- Mapbox JS (must come before your code that uses mapboxgl, threw errors at me when it didn't) -->
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+
+<!-- Custom JS that loads places from the GEOJSON file (API Token Locked to URL) -->
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoibmFpdG90Y2hpIiwiYSI6ImNtOHkwM2tvYTA5bzYya3B0NDc0Ym45OGQifQ.CLEN6rwSj0j83LlrFHxppQ';
+
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-86.8987866069881, 41.71436885937561],
+    zoom: 6
+  });
+
+  fetch(`food-places.geojson?v=${Date.now()}`)
+    .then(response => response.json())
+    .then(data => {
+      data.features.forEach(place => {
+        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+          `<strong>${place.properties.name}</strong><br>${place.properties.city}<br>${place.properties.notes}`
+        );
+
+        new mapboxgl.Marker()
+          .setLngLat(place.geometry.coordinates)
+          .setPopup(popup)
+          .addTo(map);
+      });
+    })
+    .catch(err => {
+      console.error('Failed to load GeoJSON:', err);
+    });
+</script>
+
+</body>
+</html>

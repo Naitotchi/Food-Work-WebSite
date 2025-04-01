@@ -1,0 +1,30 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Smokin Fattys BBQ",
+          "city": "Elkhart, IN",
+          "notes": "Excellent food, great service"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-85.97462517072375, 41.7331569182993]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Flippin Cow",
+          "city": "Elkhart, IN",
+          "notes": "Small bar, quick decent burgers, mediocre service"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-85.97493686341816, 41.74787851518979]
+        }
+      }
+    ]
+  }
+  
